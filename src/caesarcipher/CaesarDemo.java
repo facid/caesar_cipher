@@ -9,20 +9,20 @@ public class CaesarDemo {
     public static void main(String args[]) {
         CaesarDemo cd = new CaesarDemo();
 
-        Scanner scr = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter key: ");
+            cd.key = nextIntLine(scanner);
 
-        System.out.println("Enter key: ");
-        cd.key = nextIntLine(scr);
+            System.out.println("Enter encoding text: ");
+            String encodingText = scanner.nextLine();
+            String encodedText = cd.encrypt(encodingText);
+            System.out.println(encodedText);
 
-        System.out.println("Enter encoding text: ");
-        String encodingText = scr.nextLine();
-        String encodedText = cd.encrypt(encodingText);
-        System.out.println(encodedText);
-
-        System.out.println("Enter decoded text: ");
-        String decodingText = scr.nextLine();
-        String decodedText = cd.decrypt(decodingText);
-        System.out.println(decodedText);
+            System.out.println("Enter decoded text: ");
+            String decodingText = scanner.nextLine();
+            String decodedText = cd.decrypt(decodingText);
+            System.out.println(decodedText);
+        }
     }
 
 
